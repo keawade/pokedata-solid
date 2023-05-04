@@ -1,4 +1,4 @@
-import { PokemonType } from "../interfaces/PokemonType";
+import { PokemonType } from '../interfaces/PokemonType';
 
 export const matchups: Record<
   PokemonType,

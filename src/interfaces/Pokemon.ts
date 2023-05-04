@@ -1,4 +1,4 @@
-import { PokemonType } from "./PokemonType";
+import { PokemonType } from './PokemonType';
 
 export type Pokemon = {
   id: string;
