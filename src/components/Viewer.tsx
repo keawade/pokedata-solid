@@ -25,9 +25,7 @@ export const Viewer: Component = () => {
             </Grid>
             <Divider flexItem orientation="vertical" />
             <Grid item md={5}>
-              <div>
-                <For each={history[0].types}>{(type) => <div>{type}</div>}</For>
-              </div>
+              <For each={history[0].types}>{(type) => <div>{type}</div>}</For>
             </Grid>
           </Grid>
         </Grid>

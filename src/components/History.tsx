@@ -21,6 +21,8 @@ export const History: Component = () => {
                   component="img"
                   image={`http://assets.pokemon.com/assets/cms2/img/pokedex/full/${pokemon.id}.png`}
                   alt={`Image of the Pokemon ${pokemon.name}.`}
+                  elementtiming="pokemon"
+                  fetchpriority="high"
                 />
                 <CardContent>
                   <Typography variant="h5">{pokemon.name}</Typography>

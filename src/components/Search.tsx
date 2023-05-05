@@ -8,13 +8,11 @@ export const Search: Component = () => {
   const [_history, { selectPokemon }] = useHistory()!;
   const props = createOptions(pokemon, { key: 'name' });
   return (
-    <div>
-      <Select
-        {...props}
-        onChange={(item: Pokemon) => {
-          selectPokemon(item.id);
-        }}
-      />
-    </div>
+    <Select
+      {...props}
+      onChange={(item: Pokemon) => {
+        selectPokemon(item.id);
+      }}
+    />
   );
 };
