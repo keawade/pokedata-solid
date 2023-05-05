@@ -1,24 +1,20 @@
-import { Component, For } from 'solid-js';
+import { Component } from 'solid-js';
 import { default as pokemon } from '../data/pokemon.json';
 import { useHistory } from '../HistoryProvider';
+import { Select, createOptions } from '@thisbeyond/solid-select';
+import { Pokemon } from '../interfaces/Pokemon';
 
 export const Search: Component = () => {
-  const [history, { selectPokemon }] = useHistory()!;
+  const [_history, { selectPokemon }] = useHistory()!;
+  const props = createOptions(pokemon, { key: 'name' });
   return (
     <div>
-      <select
-        onChange={(e) => {
-          e.preventDefault();
-          if (e.currentTarget.value) {
-            selectPokemon(e.currentTarget.value);
-          }
+      <Select
+        {...props}
+        onChange={(item: Pokemon) => {
+          selectPokemon(item.id);
         }}
-      >
-        <option value="">Select a Pokemon!</option>
-        <For each={pokemon}>
-          {(item) => <option value={item.id}>{item.name}</option>}
-        </For>
-      </select>
+      />
     </div>
   );
 };
