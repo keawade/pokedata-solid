@@ -15,7 +15,7 @@ export const Viewer: Component = () => {
     <Card>
       <Grid container direction="column">
         <Grid item>
-          <Typography align="center" variant="h3">
+          <Typography align="center" variant="h3" margin="1rem">
             {history()[0].name}
           </Typography>
         </Grid>
@@ -31,16 +31,19 @@ export const Viewer: Component = () => {
                 fetchpriority="high"
               />
             </Grid>
+
             <Divider flexItem orientation="vertical" />
+
             <Grid item md={5}>
-              <Typography>Type</Typography>
-              <Grid container spacing={1}>
+              <Typography variant="h5">Type</Typography>
+              <Grid container spacing={1} marginBottom="1rem">
                 <For each={history()[0].types}>
                   {(type) => <Type type={type as PokemonType} />}
                 </For>
               </Grid>
-              <Typography>Weaknesses</Typography>
-              <Grid container spacing={1}>
+
+              <Typography variant="h5">Weaknesses</Typography>
+              <Grid container spacing={1} marginBottom="1rem">
                 <For
                   each={Object.entries(matchups())
                     .filter(([_vs, modifier]) => modifier > 1)
@@ -49,8 +52,9 @@ export const Viewer: Component = () => {
                   {(type) => <Type type={type as PokemonType} />}
                 </For>
               </Grid>
-              <Typography>Resistances</Typography>
-              <Grid container spacing={1}>
+
+              <Typography variant="h5">Resistances</Typography>
+              <Grid container spacing={1} marginBottom="1rem">
                 <For
                   each={Object.entries(matchups())
                     .filter(([_vs, modifier]) => modifier < 1 && modifier !== 0)
@@ -59,8 +63,9 @@ export const Viewer: Component = () => {
                   {(type) => <Type type={type as PokemonType} />}
                 </For>
               </Grid>
-              <Typography>Immunities</Typography>{' '}
-              <Grid container spacing={1}>
+
+              <Typography variant="h5">Immunities</Typography>
+              <Grid container spacing={1} marginBottom="1rem">
                 <For
                   each={Object.entries(matchups())
                     .filter(([_vs, modifier]) => modifier === 0)
