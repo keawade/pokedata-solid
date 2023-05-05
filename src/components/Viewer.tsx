@@ -34,33 +34,41 @@ export const Viewer: Component = () => {
             <Divider flexItem orientation="vertical" />
             <Grid item md={5}>
               <Typography>Type</Typography>
-              <For each={history()[0].types}>
-                {(type) => <Type type={type as PokemonType} />}
-              </For>
+              <Grid container spacing={1}>
+                <For each={history()[0].types}>
+                  {(type) => <Type type={type as PokemonType} />}
+                </For>
+              </Grid>
               <Typography>Weaknesses</Typography>
-              <For
-                each={Object.entries(matchups())
-                  .filter(([_vs, modifier]) => modifier > 1)
-                  .map(([vs]) => vs)}
-              >
-                {(type) => <Type type={type as PokemonType} />}
-              </For>
+              <Grid container spacing={1}>
+                <For
+                  each={Object.entries(matchups())
+                    .filter(([_vs, modifier]) => modifier > 1)
+                    .map(([vs]) => vs)}
+                >
+                  {(type) => <Type type={type as PokemonType} />}
+                </For>
+              </Grid>
               <Typography>Resistances</Typography>
-              <For
-                each={Object.entries(matchups())
-                  .filter(([_vs, modifier]) => modifier < 1 && modifier !== 0)
-                  .map(([vs]) => vs)}
-              >
-                {(type) => <Type type={type as PokemonType} />}
-              </For>
+              <Grid container spacing={1}>
+                <For
+                  each={Object.entries(matchups())
+                    .filter(([_vs, modifier]) => modifier < 1 && modifier !== 0)
+                    .map(([vs]) => vs)}
+                >
+                  {(type) => <Type type={type as PokemonType} />}
+                </For>
+              </Grid>
               <Typography>Immunities</Typography>{' '}
-              <For
-                each={Object.entries(matchups())
-                  .filter(([_vs, modifier]) => modifier === 0)
-                  .map(([vs]) => vs)}
-              >
-                {(type) => <Type type={type as PokemonType} />}
-              </For>
+              <Grid container spacing={1}>
+                <For
+                  each={Object.entries(matchups())
+                    .filter(([_vs, modifier]) => modifier === 0)
+                    .map(([vs]) => vs)}
+                >
+                  {(type) => <Type type={type as PokemonType} />}
+                </For>
+              </Grid>
             </Grid>
           </Grid>
         </Grid>
