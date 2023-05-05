@@ -9,7 +9,7 @@ export const History: Component = () => {
     <div>
       <h2>History</h2>
       <Grid container spacing={2}>
-        <For each={history.slice(1)}>
+        <For each={history().slice(1)}>
           {(pokemon) => (
             <Grid item md={3} xs={6} wrap="wrap">
               <Card

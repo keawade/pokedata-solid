@@ -1,18 +1,18 @@
-import { createContext, useContext, JSXElement } from 'solid-js';
+import { createContext, useContext, JSXElement, createSignal } from 'solid-js';
 import { default as allPokemon } from './data/pokemon.json';
 import { Pokemon } from './interfaces/Pokemon';
 import { createStore } from 'solid-js/store';
 
 const makeHistoryContext = (
-  initialPokemon = allPokemon[Math.ceil(Math.random() * 151)]
+  initialPokemon = allPokemon[Math.ceil(Math.random() * 151)] as Pokemon
 ) => {
-  const [history, setHistory] = createStore([initialPokemon]);
+  const [history, setHistory] = createSignal([initialPokemon]);
   return [
     history,
     {
       selectPokemon: (id: string) => {
         setHistory((previousHistory) => [
-          allPokemon.find((pokemon) => pokemon.id === id)!,
+          (allPokemon as Pokemon[]).find((pokemon) => pokemon.id === id)!,
           ...previousHistory.filter((prevPoke) => prevPoke.id !== id),
         ]);
       },
