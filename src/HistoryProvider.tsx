@@ -3,7 +3,9 @@ import { default as allPokemon } from './data/pokemon.json';
 import { Pokemon } from './interfaces/Pokemon';
 import { createStore } from 'solid-js/store';
 
-const makeHistoryContext = (initialPokemon = allPokemon[0]) => {
+const makeHistoryContext = (
+  initialPokemon = allPokemon[Math.ceil(Math.random() * 151)]
+) => {
   const [history, setHistory] = createStore([initialPokemon]);
   return [
     history,
@@ -11,7 +13,7 @@ const makeHistoryContext = (initialPokemon = allPokemon[0]) => {
       selectPokemon: (id: string) => {
         setHistory((previousHistory) => [
           allPokemon.find((pokemon) => pokemon.id === id)!,
-          ...previousHistory,
+          ...previousHistory.filter((prevPoke) => prevPoke.id !== id),
         ]);
       },
     },
