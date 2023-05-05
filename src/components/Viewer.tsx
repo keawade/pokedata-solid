@@ -3,6 +3,8 @@ import { useHistory } from '../HistoryProvider';
 import { Card, Divider, Grid, Typography } from '@suid/material';
 
 import styles from './viewer.module.scss';
+import { typeColorPalette } from '../data/typeColorPalette';
+import { PokemonType } from '../interfaces/PokemonType';
 
 export const Viewer: Component = () => {
   const [history] = useHistory()!;
@@ -28,7 +30,19 @@ export const Viewer: Component = () => {
             <Divider flexItem orientation="vertical" />
             <Grid item md={5}>
               <For each={history[0].types}>
-                {(type) => <div class={styles.type}>{type}</div>}
+                {(type) => (
+                  <div
+                    class={styles.type}
+                    style={{
+                      'background-color':
+                        typeColorPalette[type as PokemonType].primary,
+                      'border-color':
+                        typeColorPalette[type as PokemonType].secondary,
+                    }}
+                  >
+                    {type}
+                  </div>
+                )}
               </For>
             </Grid>
           </Grid>
