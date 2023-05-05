@@ -16,7 +16,7 @@ export const Viewer: Component = () => {
       <Grid container direction="column">
         <Grid item>
           <Typography align="center" variant="h3" margin="1rem">
-            {history()[0].name}
+            {history()[0].id} - {history()[0].name}
           </Typography>
         </Grid>
         <Grid item>
