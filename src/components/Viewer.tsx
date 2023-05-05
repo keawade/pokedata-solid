@@ -2,6 +2,8 @@ import { Component, For } from 'solid-js';
 import { useHistory } from '../HistoryProvider';
 import { Card, Divider, Grid, Typography } from '@suid/material';
 
+import styles from './viewer.module.scss';
+
 export const Viewer: Component = () => {
   const [history] = useHistory()!;
 
@@ -25,7 +27,9 @@ export const Viewer: Component = () => {
             </Grid>
             <Divider flexItem orientation="vertical" />
             <Grid item md={5}>
-              <For each={history[0].types}>{(type) => <div>{type}</div>}</For>
+              <For each={history[0].types}>
+                {(type) => <div class={styles.type}>{type}</div>}
+              </For>
             </Grid>
           </Grid>
         </Grid>
